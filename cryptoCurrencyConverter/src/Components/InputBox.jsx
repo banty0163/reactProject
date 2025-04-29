@@ -1,51 +1,48 @@
 import React from 'react'
 
 function InputBox({
-  label,
-  amount,
-  onAmountChange,
-  onCurrencyChange,
- currencyType="btc",
- selectOption =[],
- amountDisabled=false,
- currencyDisabled=false
-
-  
+    label,
+    amount,
+    onAmountChange,
+    onCurrencyChange,
+    currencyType,
+    selectOption=[],
+    selectCurrency="btc",
+    amountDisable=false,
+    currencyDisable=false
 
 }) {
+    
   return (
-    <div className='p-4 space-y-4 bg-gray-50 rounded-md shadow-md max-w-md mx-auto'>
-     <div className="flex flex-col space-y-1">
-        <label className="font-semibold text-gray-700">
-           {label}
-        </label>
+       <div className="space-y-4 p-4 border rounded-md max-w-sm">
+         <label className="block text-lg font-semibold mb-1">{label}</label>
 
-        <input 
-          type="number" 
-          placeholder='Amount'
-          value={amount}
-          disabled={amountDisabled}
-          onChange={(e)=>onAmountChange && onAmountChange(Number(e.target.value))}
-          className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-     </div>
-     <div className="flex flex-col space-y-1">
-        <label className="font-semibold text-gray-700">Currency Type</label>
-        <select className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-         value={currencyType}
-         disabled={currencyDisabled}
-         onChange={(e)=>onCurrencyChange && onCurrencyChange(e.target.value)} 
-        >
-           {
-            selectOption.map((currency) => (
-              <option key={currency} value={currency}>
-                {currency}
-              </option>
-            ))
-           }
-        </select>
-     </div>
+         <input 
+           type="number" 
+           value={amount}
+           placeholder='amount'
+           onChange={(e)=>onAmountChange && onAmountChange(Number(e.target.value))}
+           disabled={amountDisable}
+           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+         />
+         <div>
+            <p className="mb-1 font-medium">Currency Type</p>
+            <select 
+              value={currencyType}
+              disabled={currencyDisable}
+              onChange={(e)=>onCurrencyChange && onCurrencyChange(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                {
+                    selectOption.map((currency)=>( 
+                        <option key={currency} value={currency} >{currency}</option>
+                    ))
+                }
+            </select>
+         </div>
 
-    </div>
+       </div>
   )
-}export default InputBox
+}
+
+export default InputBox
