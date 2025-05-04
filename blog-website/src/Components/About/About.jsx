@@ -1,15 +1,13 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
 
-export default function About() {
-  return(
-     <>
-      <h1>This is about page</h1>
-     
-      <p>This page contains information about our website.</p>
-      <NavLink to="/about/child">ChildComponent</NavLink> 
-      <NavLink to="/previous">previous</NavLink> 
-      
-     </>
+function About() {
+  return (
+     <div>
+        <h1 className='text-4xl bg-red-300'>About</h1>
+        <p className='text-2xl'>This is a blog website</p>
+        
+     </div>
   )
 }
+
+export default About
